@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotería Mexicana</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+            font-size: 40px;
+        }
+        .tablero {
+            display: grid;
+            grid-template-columns: repeat({{ columnas }}, 100px);
+            gap: 5px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .carta {
+            width: 100px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            font-weight: bold;
+            color: black;
+            text-align: center;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tablero de Lotería</h1>
+    <div class="tablero">
+        {% for i in range(filas) %}
+            {% for j in range(columnas) %}
+                {% set indice = i * columnas + j %}
+                <div class="carta" style="background-color: {{ colores[indice % 3] }}">
+                    {{ cartas[indice] }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    </div>
+</body>
+</html>
