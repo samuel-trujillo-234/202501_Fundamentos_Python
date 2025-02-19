@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loteria Mexicana 2</title>
+    <style>
+        h1{
+            display: flex;
+            justify-content: center;
+        }
+        p{
+            display: flex;
+            justify-content: center;
+        }
+        .anuncio{
+            font-size: 35px;
+
+        }
+        .adivina{
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido a Loteria Mexicana 2</h1>
+    <p>Elegiremos una carta aleatoria de la loteria y tu debes adivinar el numero de la carta</p>
+
+    <p class="anuncio" style="color: {{ color }};">{{ mensaje }}</p>
+<form method="POST">
+    <div class="adivina">
+        <label for="adivinar">1-54</label>
+        <input type="number" id="adivinar" name="adivinar" required>
+        <button type="submit">Adivina</button>
+    </div>
+</form>
+
+
+</body>
+</html>
