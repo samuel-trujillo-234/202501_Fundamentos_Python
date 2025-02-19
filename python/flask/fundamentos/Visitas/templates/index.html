@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitas</title>
+    <style>
+        h1 {
+            display: flex;
+            justify-content: center;
+            font-size: 70px;
+        }
+
+        .contenedor {
+            font-size: 30px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        button {
+            font-size: 25px;
+            padding: 10px;
+            background-color: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: gray;
+        }
+
+        .botones {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .historial {
+            margin-top: 30px;
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Visitas: {{ visitas }}</h1>
+        <p style="text-align: center; font-size: 25px;">Veces que las visitas han sido reiniciadas: {{ reinicios }}</p>
+    </header>
+
+    <div class="contenedor">
+        <form action="/aumentar_visitas" method="post">
+            <div class="form-group">
+                <label for="cantidad">Aumentar visitas en:</label>
+                <input type="number" id="cantidad" name="cantidad" required>
+            </div>
+            <button type="submit">Aumentar</button>
+        </form>
+
+        <div class="botones">
+            <form action="/incrementar" method="post">
+                <button type="submit">+2 Visitas</button>
+            </form>
+            <form action="/reiniciar" method="post">
+                <button type="submit">Reiniciar Visitas</button>
+            </form>
+            <form action="/destruir_sesion">
+                <button type="submit">Borrar Sesión</button>
+            </form>
+        </div>
+
+        <div class="historial">
+            <h2>Historial de Reinicios:</h2>
+            <ul>
+                {% for key, value in historial.items() %}
+                    <li>{{ key }}: {{ value }} visitas</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
