@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorador de Reliquias</title>
+    <style>
+        h1{
+            font-size: 50px;
+            display: flex;
+            justify-content: center;
+        }
+        p{
+            font-size: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .botones{
+            display: flex;
+            justify-content:center;
+            gap: 40px;
+        }
+        .container {
+        display: flex;
+        flex-direction: column; 
+        align-items: center; 
+        justify-content: center; 
+        height: 500px;
+        gap: 10px; 
+        }   
+        .aventura{
+            padding: 15px;
+            gap: 30px;
+            background-color: green;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Explorador de Reliquias</h1>
+    <p>Reliquias encontradas: {{ reliquias }}</p>
+    <div class="botones">
+    <form action="/buscar_reliquias" method="post">
+        <input class="aventura" type="hidden" name="lugar" value="templo">
+        <input class="aventura" type="submit" value="Explorar Templo">
+    </form>
+    
+    <form action="/buscar_reliquias" method="post">
+        <input class="aventura" type="hidden" name="lugar" value="pirámide">
+        <input class="aventura" type="submit" value="Explorar Pirámide">
+    </form>
+    
+    <form action="/buscar_reliquias" method="post">
+        <input class="aventura" type="hidden" name="lugar" value="selva">
+        <input class="aventura" type="submit" value="Explorar Selva">
+    </form>
+    
+    <form action="/buscar_reliquias" method="post">
+        <input class="aventura" type="hidden" name="lugar" value="ruinas">
+        <input class="aventura" type="submit" value="Explorar Ruinas">
+    </form>
+</div>
+<div class="container">
+    <h2>Actividades</h2>
+    <ul>
+        {{ actividades|safe }}
+    </ul>
+    
+    <a href="/reiniciar">Reiniciar Juego</a>
+</div>
+</body>
+</html>
